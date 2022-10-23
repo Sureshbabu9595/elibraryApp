@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Librarian Section</title>
+<link rel='stylesheet' href='bootstrap.min.css'/>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/ELibrary/login">eLibrary</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="AddBookForm">Add Book</a></li>
+        <li><a href="ViewBook">View Book</a></li>
+        <li><a href="IssueBookForm">Issue Book</a></li>
+        <li><a href="ViewIssuedBook">View Issued Book</a></li>
+        <li><a href="ReturnBookForm">Return Book</a></li>
+        <li><a href="/ELibrary/LogoutLibrarian">Logout</a></li>
+       </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div>
+	<table>
+    	<tr>
+    		<td th:text="${message}"></td>
+    	</tr>
+	</table>
+</div>
+
+<table class='table table-bordered table-striped'>
+	<tr><th>Callno</th><th>Student Id</th><th>Student Name</th><th>Student Mobile</th><th>Issued Date</th><th>Return Status</th></tr>
+	<tr th:each = "issueBbook:${issueBookList}">
+		<td th:text="${issueBbook.callno}"></td>
+		<td th:text="${issueBbook.studentid}"></td>
+		<td th:text="${issueBbook.studentname}"></td>
+		<td th:text="${issueBbook.studentmobile}"></td>
+		<td th:text="${issueBbook.issueddate}"></td>
+		<td th:text="${issueBbook.returnstatus}"></td>
+	</tr>
+</table>
+
+ <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</body>
+</html>
